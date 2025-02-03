@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+   <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <h1>Color Guessing Game</h1>
+    <p id="gameInstructions">Guess the correct color!</p>
+    <div id="colorBox" class="color-box"></div>
+    <div class="score-container">
+        <p>Score: <span id="score">0</span></p>
+        <p>Lives left: <span id="lives">3</span></p>
+        <p>Time left: <span id="timer">5</span> seconds</p>
+    </div>
+    <div class="button-container" id="gameButtons">
+        <button onclick="handleGuess(this)" style="background-color: red;">Red</button>
+        <button onclick="handleGuess(this)" style="background-color: blue;">Blue</button>
+        <button onclick="handleGuess(this)" style="background-color: green;">Green</button>
+        <button onclick="handleGuess(this)" style="background-color: yellow;">Yellow</button>
+        <button onclick="handleGuess(this)" style="background-color: orange;">Orange</button>
+        <button onclick="handleGuess(this)" style="background-color: purple;">Purple</button>
+    </div>
+    <button onclick="startNewGame()" style="background-color: #ff9800;">New Game</button>
+    <div id="gameOver" class="hidden">
+        <h2>Game Over!</h2>
+        <button onclick="startNewGame()" style="background-color: red;">Restart Game</button>
+    </div>
+    <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
+    <audio id="incorrectSound" src="incorrect.mp3" preload="auto"></audio>
+    <audio id="timeUpSound" src="timeup.mp3" preload="auto"></audio>
+     
+    <script src="game.js"></script>
+
+</body>
+</html>
