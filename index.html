@@ -7,28 +7,37 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-    <h1>Color Guessing Game</h1>
-    <p id="gameInstructions" data-testid="gameInstructions">Guess the correct color!</p>
-    <div id="colorBox" class="color-box" data-testid="colorBox"></div>
-    <p id="gameStatus" data-testid="gameStatus"></p>
+    <div class="game-container">
+        <h1>🎨 Color Guessing Game</h1>
+        <p id="gameInstructions" data-testid="gameInstructions">Guess the correct color!</p>
 
-    <div class="score-container">
-        <p>Score: <span id="score" data-testid="score">0</span></p>
+        <!-- Color Box -->
+        <div id="colorBox" class="color-box" data-testid="colorBox"></div>
+
+        <!-- Game Status -->
+        <p id="gameStatus" data-testid="gameStatus"></p>
+
+        <!-- Timer -->
+        <p id="timer" data-testid="timer">⏳ Time Left: <span>5s</span></p>
+
+        <!-- Score -->
+        <div class="score-container">
+            <p>🏆 Score: <span id="score" data-testid="score">0</span></p>
+        </div>
+
+        <!-- Color Options -->
+        <div class="button-container" id="gameButtons">
+            <button class="color-option" data-testid="colorOption"></button>
+            <button class="color-option" data-testid="colorOption"></button>
+            <button class="color-option" data-testid="colorOption"></button>
+            <button class="color-option" data-testid="colorOption"></button>
+            <button class="color-option" data-testid="colorOption"></button>
+            <button class="color-option" data-testid="colorOption"></button>
+        </div>
+
+        <!-- New Game Button -->
+        <button id="newGameButton" data-testid="newGameButton">🔄 New Game</button>
     </div>
-
-    <div class="button-container" id="gameButtons">
-        <button class="color-option" data-testid="colorOption"></button>
-        <button class="color-option" data-testid="colorOption"></button>
-        <button class="color-option" data-testid="colorOption"></button>
-        <button class="color-option" data-testid="colorOption"></button>
-        <button class="color-option" data-testid="colorOption"></button>
-        <button class="color-option" data-testid="colorOption"></button>
-    </div>
-
-    <button id="newGameButton" data-testid="newGameButton">New Game</button>
-
-    <audio id="correctSound" src="correct.mp3" preload="auto"></audio>
-    <audio id="incorrectSound" src="incorrect.mp3" preload="auto"></audio>
 
     <script src="game.js"></script>
 </body>
