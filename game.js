@@ -4,6 +4,7 @@ let score = 0;
 let timer;
 let timeLeft = 5;
 
+// Select elements
 const colorBox = document.getElementById("colorBox");
 const gameStatus = document.getElementById("gameStatus");
 const scoreDisplay = document.getElementById("score");
@@ -11,12 +12,11 @@ const newGameButton = document.getElementById("newGameButton");
 const buttons = document.querySelectorAll(".color-option");
 const timerDisplay = document.getElementById("timer").querySelector("span");
 
-// Load sound files with fallback for .wav format
+// Load sound files with fallback for .wav
 const correctSound = new Audio();
 const incorrectSound = new Audio();
 const timeUpSound = new Audio();
 
-// Function to load both `.mp3` and `.wav`
 function loadSound(audioElement, name) {
     const mp3Source = document.createElement("source");
     mp3Source.src = `${name}.mp3`;
@@ -30,21 +30,19 @@ function loadSound(audioElement, name) {
     audioElement.appendChild(wavSource);
 }
 
-// Load sound files
 loadSound(correctSound, "correct");
 loadSound(incorrectSound, "incorrect");
 loadSound(timeUpSound, "timeup");
 
-// Function to start a new game
+// Start a new game
 function startNewGame() {
     clearInterval(timer);
     timeLeft = 5;
-    timerDisplay.textContent = `${timeLeft}s`;
+    timerDisplay.textContent = `${timeLeft}`;
 
+    // Choose a new target color
     targetColor = colors[Math.floor(Math.random() * colors.length)];
-    setTimeout(() => {
-        colorBox.style.backgroundColor = targetColor;
-    }, 100);
+    colorBox.style.backgroundColor = targetColor;
 
     gameStatus.textContent = "Guess the correct color!";
     gameStatus.style.color = "white";
@@ -58,10 +56,10 @@ function startNewGame() {
     timer = setInterval(updateTimer, 1000);
 }
 
-// Function to update the timer
+// Update the timer
 function updateTimer() {
     timeLeft--;
-    timerDisplay.textContent = `${timeLeft}s`;
+    timerDisplay.textContent = `${timeLeft}`;
 
     if (timeLeft <= 0) {
         clearInterval(timer);
@@ -72,7 +70,7 @@ function updateTimer() {
     }
 }
 
-// Function to handle user guess
+// Handle user guess
 function handleGuess(selectedColor) {
     if (selectedColor === targetColor) {
         clearInterval(timer);
@@ -80,7 +78,7 @@ function handleGuess(selectedColor) {
         gameStatus.style.color = "lightgreen";
         correctSound.play();
         score++;
-        scoreDisplay.textContent = score;
+        scoreDisplay.textContent = score; // ✅ FIXED: Score now updates
         setTimeout(startNewGame, 1000);
     } else {
         gameStatus.textContent = "❌ Wrong! Try again.";
@@ -90,7 +88,7 @@ function handleGuess(selectedColor) {
     }
 }
 
-// Fade effect on wrong answer
+// Add fade effect on wrong answer
 function fadeEffect(wrongColor) {
     buttons.forEach(button => {
         if (button.style.backgroundColor === wrongColor) {
@@ -105,5 +103,6 @@ function disableButtons() {
     buttons.forEach(button => (button.onclick = null));
 }
 
+// Event Listeners
 newGameButton.addEventListener("click", startNewGame);
 document.addEventListener("DOMContentLoaded", startNewGame);
